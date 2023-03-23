@@ -10,8 +10,13 @@ CONFIG.db_name = process.env.DB_NAME || 'name';
 CONFIG.db_user = process.env.DB_USER || 'root';
 CONFIG.db_password = process.env.DB_PASSWORD || 'db-password';
 
-CONFIG.member_list = process.env.MEMBER_LIST.split(',') || [];
-CONFIG.member_list_github = process.env.MEMBER_LIST_GITHUB.split(',') || [];
+CONFIG.member_list = process.env.MEMBER_LIST || '';
+if (CONFIG.member_list == '') CONFIG.member_list = [];
+else CONFIG.member_list = process.env.MEMBER_LIST.split(',');
+
+CONFIG.member_list_github = process.env.MEMBER_LIST_GITHUB || '';
+if (CONFIG.member_list_github == '') CONFIG.member_list_github = [];
+else CONFIG.member_list_github = process.env.MEMBER_LIST_GITHUB.split(',');
 
 CONFIG.slack_api_token = process.env.SLACK_API_TOKEN;
 CONFIG.slack_channel_id = process.env.SLACK_CHANNEL_ID;

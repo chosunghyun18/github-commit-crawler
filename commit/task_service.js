@@ -1,9 +1,6 @@
-const {
-  getLastSavedCommitTime,
-  saveCommit,
-} = require('./commit/commit_service');
+const { getLastSavedCommitTime, saveCommit } = require('./commit_service');
 const { getUnsavedCommit } = require('./slack/slack');
-const { member_list_github } = require('./config/config');
+const { member_list_github } = require('../config/config');
 
 switch (process.argv[2]) {
   case 'save':

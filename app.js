@@ -3,6 +3,7 @@ const v1 = require('./routes/v1');
 
 const app = express();
 
+// ex) url :  http://127.0.0.1:3000/api/v1/test
 app.use('/api/v1', v1);
 
 // catch 404 and forward to error handler

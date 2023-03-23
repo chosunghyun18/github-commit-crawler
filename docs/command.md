@@ -27,3 +27,5 @@ MEMBER_LIST_GITHUB="cc,cc"
 PORT = 3000
 SLACK_API_TOKEN="a"
 SLACK_CHANNEL_ID="c"
+
+-$ docker inspect postgresql

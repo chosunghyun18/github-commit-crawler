@@ -1,5 +1,8 @@
-const { getLastSavedCommitTime, saveCommit } = require('./api/db');
-const { getUnsavedCommit } = require('./api/slack');
+const {
+  getLastSavedCommitTime,
+  saveCommit,
+} = require('./commit/commit_service');
+const { getUnsavedCommit } = require('./slack/slack');
 const { member_list_github } = require('./config/config');
 
 switch (process.argv[2]) {
@@ -7,7 +10,7 @@ switch (process.argv[2]) {
     (async () => {
       const lastTime = await getLastSavedCommitTime().then((res) => res);
       let unSavedCommit = await getUnsavedCommit(lastTime);
-	  // console.log(unSavedCommit);
+      // console.log(unSavedCommit);
       unSavedCommit = unSavedCommit.reverse();
       unSavedCommit.map(async (e) => {
         if (!member_list_github.includes(e['author_name'])) {

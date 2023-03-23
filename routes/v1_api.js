@@ -1,5 +1,5 @@
 const express = require('express');
-const { getCommitters, getAllCommits } = require('../api/db');
+const { getCommitters, getAllCommits } = require('../commit/commit_service');
 const CONFIG = require('../config/config');
 const router = express.Router();
 

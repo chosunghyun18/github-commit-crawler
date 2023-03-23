@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    env_file:
+      - .env
+    container_name: postgresql
+    restart: always
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+  node:
+    env_file:
+      - .env
+    container_name: express_task_dev
+    restart: on-failure
+    working_dir: '/app'
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    command: pm2-runtime app.js

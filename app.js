@@ -3,12 +3,7 @@ const v1 = require('./routes/v1');
 
 const app = express();
 
-app.use('/v1', v1);
-
-app.use('/', function (req, res) {
-  res.statusCode = 200; //send the appropriate status code
-  res.json({ status: 'success', message: 'Slack bot', data: {} });
-});
+app.use('/api/v1', v1);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

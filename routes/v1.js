@@ -21,4 +21,13 @@ router.get('/username', async (req, res) => {
   return res.send({ committers: CONFIG.member_list_github });
 });
 
+router.get('/test', async (req, res) => {
+  res.statusCode = 200; //send the appropriate status code
+  res.json({
+    status: 'success',
+    message: 'Test Message',
+    data: { code: res.statusCode },
+  });
+});
+
 module.exports = router;

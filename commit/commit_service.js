@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 const { member_list_github, member_list } = require('../config/config');
-const { getKoreaDateString } = require('../lib/libs');
+const { getKoreaDateString } = require('../utils/utils');
 const CONFIG = require('../config/config');
 
 const pool = new Pool({
@@ -45,7 +45,7 @@ const getCommitters = async (dateString) => {
     const idx = username_list.indexOf(e['github_username']);
     if (commit.includes(notCommit[idx])) return;
     commit.push(notCommit[idx]);
-	// console.log(listWithGithub);
+    // console.log(listWithGithub);
     listWithGithub = listWithGithub.map((element) => {
       if (element.username === e['github_username']) {
         return {

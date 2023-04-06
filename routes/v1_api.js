@@ -23,7 +23,7 @@ router.get('/username', async (req, res) => {
 
 router.get('/test', async (req, res) => {
   res.statusCode = 200; //send the appropriate status code
-  res.json({
+  return res.json({
     status: 'success',
     message: 'Test Message',
     data: { code: res.statusCode },
